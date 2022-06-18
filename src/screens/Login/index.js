@@ -4,10 +4,10 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import Button from '../../components/Button';
 import styles from './styles';
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/slices/authSlice'
+import { login } from '../../redux/slices/authSlice';
 // import { TEST_KEY } from '@env'
 export default function Login({ navigation, route }) {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     return (
         <ScreenWrapper>
             <View style={styles.mainViewContainer}>
