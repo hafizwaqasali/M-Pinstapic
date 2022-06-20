@@ -2,7 +2,6 @@ import * as React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../screens/Login'
-import Home from '../screens/Home'
 import { useSelector } from 'react-redux';
 import { selectIsLogin } from '../redux/slices/authSlice';
 import Loader from '../components/Loader';
@@ -18,8 +17,7 @@ export default function Routes() {
           <Stack.Screen name="Login" component={Login} />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="Home" screenOptions={{ header: () => false }}>
-          <Stack.Screen name="Home" component={Home} />
+        <Stack.Navigator screenOptions={{ header: () => false }}>
         </Stack.Navigator>
       )}
     </NavigationContainer>
