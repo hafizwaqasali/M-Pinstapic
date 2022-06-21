@@ -1,47 +1,46 @@
-import { View } from 'react-native'
-import React from 'react'
+import { View, Text, TextInput } from 'react-native'
+import React, { useRef, useState } from 'react'
 import styles from './styles'
-import { TextInput } from 'react-native-paper';
 import AppColors from '../../utills/AppColors';
-import { width } from 'react-native-dimension';
+import { height, width } from 'react-native-dimension';
 import AppFonts from '../../utills/AppFonts';
 
-export const Textinput = ({
+export const InputField = ({
     containerStyles,
+    inputContainerStyles,
+    labelStyles,
     keyboardType,
     placeholder,
     label,
-    mode = "outlined",
-    activeOutlineColor = AppColors.white,
-    inactiveOutlineColor = AppColors.white,
     placeholderColor = AppColors.white,
-    textColor = AppColors.white,
-    fontFamily = AppFonts.segoe_ui_regular,
-    fieldBackgroundColor = AppColors.blue,
+    rightIcon,
+    leftIcon,
+    secureTextEntry,
+    onBlur,
+    onChangeText,
+    onFocus,
+    multiline,
+    numberOfLines
 }) => {
     return (
         <View style={[styles.container, containerStyles]}>
+            {leftIcon}
             <TextInput
-                keyboardType={keyboardType}
-                mode={mode}
-                label={label}
+                style={[styles.inputContainer, inputContainerStyles]}
+                placeholderTextColor={placeholderColor}
                 placeholder={placeholder}
-                outlineColor={inactiveOutlineColor}
-                activeOutlineColor={activeOutlineColor}
-                style={{ backgroundColor: fieldBackgroundColor, }}
-                theme={{
-                    roundness: width(3),
-                    colors: {
-                        placeholder: placeholderColor,
-                        text: textColor
-                    },
-                    fonts: {
-                        regular: { fontFamily: fontFamily, },
-                    }
-                }}
-
+                secureTextEntry={secureTextEntry}
+                onBlur={onBlur}
+                onChangeText={onChangeText}
+                onFocus={onFocus}
+                multiline={multiline}
+                numberOfLines={numberOfLines}
+                keyboardType={keyboardType}
             />
+            <Text style={[styles.labelText, labelStyles]}>{label}</Text>
+            {rightIcon}
         </View >
+
     )
 }
 
