@@ -12,13 +12,14 @@ export const PrimaryBtn = ({
     activeOpacity = 0.7,
     containerStyle = {},
     textStyle = {},
+    transparentBtn
 }) => {
     return (
         <TouchableOpacity
             onPress={onPress}
             disabled={disabled || isLoading}
             activeOpacity={activeOpacity}
-            style={[styles.container, containerStyle]}>
+            style={[styles.container, transparentBtn && styles.transparent, containerStyle]}>
             {isLoading ? (
                 <ActivityIndicator color={loaderColor} size="small" />
             ) : (
@@ -27,4 +28,3 @@ export const PrimaryBtn = ({
         </TouchableOpacity>
     )
 }
-

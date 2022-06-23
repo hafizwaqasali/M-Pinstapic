@@ -6,7 +6,7 @@ import AppFonts from '../../utills/AppFonts';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
+        // justifyContent: "center",
         alignItems: "center",
         backgroundColor: AppColors.blue,
     },

@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         borderColor: AppColors.white,
         borderWidth: width(.2),
         borderRadius: width(3),
-        marginVertical: height(1),
+        marginTop: height(1),
         flexDirection: "row",
         alignItems: "center"
     },
@@ -32,6 +32,12 @@ const styles = StyleSheet.create({
         color: AppColors.white,
         fontSize: width(3)
 
+    },
+    errorText: {
+        color: AppColors.white,
+        fontFamily: AppFonts.segoe_ui_regular,
+        fontSize: width(2.5),
+        // alignSelf: "center"
     },
 
 

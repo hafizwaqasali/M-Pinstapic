@@ -8,11 +8,15 @@ const styles = StyleSheet.create({
         height: height(18),
         width: height(18),
         borderRadius: height(9),
-        borderWidth: width(.2),
-        borderColor: AppColors.white,
+        borderWidth: width(.75),
         alignItems: "center",
         justifyContent: 'center',
         marginVertical: height(2)
+    },
+    imgStyle: {
+        height: height(10),
+        width: width(20),
+        alignSelf: "center"
     }
 })
 export default styles

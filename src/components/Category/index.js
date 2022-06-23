@@ -1,20 +1,35 @@
-import { Text, View, TouchableOpacity } from 'react-native'
+import { Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import styles from "./styles"
 import { width } from 'react-native-dimension'
-import AntDesign from "react-native-vector-icons/AntDesign"
 import AppColors from '../../utills/AppColors'
 
-export const Category = ({
-    Icon = AntDesign,
+export default function Category({
+    Icon,
+    iconSize = 20,
+    iconColor,
+    iconName,
     containerStyles,
     onPress,
-    iconName = "closecircle",
-    iconColor = AppColors.white,
-}) => {
+    imageStyles,
+    imgSrc,
+    circleColor = AppColors.white,
+    resizeMode = "contain"
+}) {
     return (
-        <TouchableOpacity style={[styles.container, containerStyles]} onPress={onPress}>
-            <Icon name={iconName} size={width(20)} color={iconColor} />
+        <TouchableOpacity style={[styles.container, containerStyles, { borderColor: circleColor }]} onPress={onPress}>
+            {
+                Icon ?
+                    <Icon name={iconName} size={width(iconSize)} color={iconColor} />
+                    :
+                    imgSrc &&
+                    <Image
+                        source={imgSrc}
+                        style={[styles.imgStyle, imageStyles]}
+                        resizeMode={resizeMode}
+                    />
+            }
+
         </TouchableOpacity>
     )
 }

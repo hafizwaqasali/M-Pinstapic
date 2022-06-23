@@ -19,7 +19,8 @@ export const Header = ({
     leftIconName = "arrow-back-sharp",
     rightIconName = "plus",
     leftComponent,
-    rightComponent
+    rightComponent,
+    centerComponent
 }) => {
     return (
         <View style={[styles.container, showBottomLine && styles.bottomLine]}>
@@ -34,7 +35,8 @@ export const Header = ({
             </View>
             <View style={styles.middleContainer}>
                 {
-                    title && <Text style={[styles.title, titleSyles]}>{title}</Text>
+                    centerComponent ? centerComponent
+                        : title && <Text style={[styles.title, titleSyles]}>{title}</Text>
                 }
             </View>
             <View style={styles.rightContainer}>

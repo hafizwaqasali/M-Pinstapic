@@ -1,22 +1,66 @@
+import { View, Text } from 'react-native';
+import React from 'react';
+import { Header } from '../../components/Header';
 import ScreenWrapper from '../../components/ScreenWrapper';
-import React, { useRef, useState } from "react"
-import { View, Text, Button } from "react-native"
-import { Header } from "../../components/Header"
-import { Category } from "../../components/Category"
-import { Textinput, InputField } from "../../components/Textinput"
-import styles from './styles';
 import AppColors from '../../utills/AppColors';
+import styles from './styles';
+import { PrimaryBtn } from '../../components/Buttons';
+import { InputField, InputFieldValidate } from "../../components/Input"
+import SocialIcon from "../../components/SocialIcon"
 import { width } from 'react-native-dimension';
+import { useForm } from "react-hook-form"
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+export const loginValidationSchema = yup.object().shape({
+    password: yup
+        .string()
+        .matches(/\w*[a-z]\w*/, 'Password must have a small letter')
+        .matches(/\w*[A-Z]\w*/, 'Password must have a capital letter')
+        .matches(/\d/, 'Password must have a number')
+        .matches(
+            /[!@#$%^&*()\-_"=+{}; :,<.>]/,
+            'Password must have a special character',
+        )
+        .min(8, ({ min }) => `Password must be at least ${min} characters`)
+        .required('Password is required'),
+    email: yup.string().email("Enter a Valid email address").required("Email is Required")
+});
 
 
 export default function Login({ navigation }) {
 
 
+    const { control,
+        handleSubmit,
+        formState: { errors, isValid },
+    } = useForm({
+        mode: 'all',
+        resolver: yupResolver(loginValidationSchema),
+    })
     return (
-        <ScreenWrapper statusBarColor={AppColors.blue} headerUnScrollable={() => (<Header title={"WELCOME PINSTAR!"} />)}>
+        <ScreenWrapper
+            statusBarColor={AppColors.blue}
+            headerUnScrollable={() => <Header title={'WELCOME PINSTAR!'} />}>
             <View style={styles.container}>
-                <InputField label={"User Name"} placeholder={"Type here..."} />
-                <InputField label={"Email"} placeholder={"Type here..."} />
+                <InputField label={"Without Validation Email"} />
+                <InputFieldValidate
+                    label={"With Validation Email"}
+                    name={"email"}
+                    formControl={control}
+                    errorMsg={errors.email}
+                />
+                <InputFieldValidate
+                    label={"Password"}
+                    secureTextEntry={true}
+                    name={"password"}
+                    formControl={control}
+                    errorMsg={errors.password}
+                />
+
+                <PrimaryBtn
+                    title={'Join Now'}
+                />
             </View>
         </ScreenWrapper>
     );
