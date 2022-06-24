@@ -29,15 +29,16 @@ export const InputField = ({
     onPress,
     activeOpacity = 0.9,
     maxLength,
-    value
+    value,
+    inverted
 
 }) => {
     return (
-        <TouchableOpacity style={[styles.container, containerStyles]} onPress={onPress} activeOpacity={activeOpacity}>
+        <TouchableOpacity style={[styles.container, inverted && styles.invertedContainer, containerStyles]} onPress={onPress} activeOpacity={activeOpacity}>
             {leftIcon}
             <TextInput
-                style={[styles.inputContainer, inputContainerStyles]}
-                placeholderTextColor={placeholderColor}
+                style={[styles.inputContainer, inverted && styles.invertedInputContainer, inputContainerStyles]}
+                placeholderTextColor={inverted ? AppColors.darkblue : placeholderColor}
                 placeholder={placeholder}
                 secureTextEntry={secureTextEntry}
                 onBlur={onBlur}
@@ -53,7 +54,7 @@ export const InputField = ({
                 maxLength={maxLength}
                 value={value}
             />
-            <Text style={[styles.labelText, labelStyles]}>{label}</Text>
+            <Text style={[styles.labelText, inverted && styles.invertedLabel, labelStyles]}>{label}</Text>
             {rightIcon}
         </TouchableOpacity >
 
@@ -86,20 +87,21 @@ export const InputFieldValidate = ({
     formControl,
     name,
     maxLength,
-    errorMsg
+    errorMsg,
+    inverted
 
 }) => {
     return (
         <View>
-            <TouchableOpacity style={[styles.container, containerStyles]} onPress={onPress} activeOpacity={activeOpacity}>
+            <TouchableOpacity style={[styles.container, inverted && styles.invertedContainer, containerStyles]} onPress={onPress} activeOpacity={activeOpacity}>
                 {leftIcon}
                 <Controller
                     control={formControl}
                     name={name}
                     render={({ field: { onChange, onBlur, value } }) => (
                         <TextInput
-                            style={[styles.inputContainer, inputContainerStyles]}
-                            placeholderTextColor={placeholderColor}
+                            style={[styles.inputContainer, inverted && styles.invertedInputContainer, inputContainerStyles]}
+                            placeholderTextColor={inverted ? AppColors.darkblue : placeholderColor}
                             placeholder={placeholder}
                             secureTextEntry={secureTextEntry}
                             onBlur={onBlur}
@@ -118,7 +120,7 @@ export const InputFieldValidate = ({
                     )}
 
                 />
-                <Text style={[styles.labelText, labelStyles]}>{label}</Text>
+                <Text style={[styles.labelText, inverted && styles.invertedLabel, labelStyles]}>{label}</Text>
                 {rightIcon}
             </TouchableOpacity >
             <Text style={styles.errorText}>

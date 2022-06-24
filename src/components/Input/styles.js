@@ -15,11 +15,17 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center"
     },
+    invertedContainer: {
+        borderColor: AppColors.darkblue
+    },
     inputContainer: {
         flex: 1,
         color: AppColors.white,
         fontFamily: AppFonts.segoe_ui_regular,
         fontSize: width(3.75),
+    },
+    invertedInputContainer: {
+        color: AppColors.darkblue,
     },
     labelText:
     {
@@ -33,8 +39,12 @@ const styles = StyleSheet.create({
         fontSize: width(3)
 
     },
+    invertedLabel: {
+        backgroundColor: AppColors.white,
+        color: AppColors.darkblue,
+    },
     errorText: {
-        color: AppColors.white,
+        color: AppColors.red,
         fontFamily: AppFonts.segoe_ui_regular,
         fontSize: width(2.5),
         // alignSelf: "center"

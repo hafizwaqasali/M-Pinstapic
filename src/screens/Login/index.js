@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import React from 'react';
 import { Header } from '../../components/Header';
 import ScreenWrapper from '../../components/ScreenWrapper';
@@ -11,6 +11,8 @@ import { width } from 'react-native-dimension';
 import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import ForgotPassword from '../../components/Modals/ForgotPassword';
+import { useRef } from 'react';
 
 export const loginValidationSchema = yup.object().shape({
     password: yup
@@ -29,7 +31,7 @@ export const loginValidationSchema = yup.object().shape({
 
 
 export default function Login({ navigation }) {
-
+    const childModalRef = useRef()
 
     const { control,
         handleSubmit,
@@ -43,24 +45,8 @@ export default function Login({ navigation }) {
             statusBarColor={AppColors.blue}
             headerUnScrollable={() => <Header title={'WELCOME PINSTAR!'} />}>
             <View style={styles.container}>
-                <InputField label={"Without Validation Email"} />
-                <InputFieldValidate
-                    label={"With Validation Email"}
-                    name={"email"}
-                    formControl={control}
-                    errorMsg={errors.email}
-                />
-                <InputFieldValidate
-                    label={"Password"}
-                    secureTextEntry={true}
-                    name={"password"}
-                    formControl={control}
-                    errorMsg={errors.password}
-                />
-
-                <PrimaryBtn
-                    title={'Join Now'}
-                />
+                <ForgotPassword ref={childModalRef} />
+                <Button title="Open modal" onPress={() => childModalRef.current.show()} />
             </View>
         </ScreenWrapper>
     );
