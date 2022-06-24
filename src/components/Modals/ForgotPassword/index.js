@@ -7,6 +7,8 @@ import { PrimaryBtn } from "../../Buttons"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup';
+import Linksent from "../../Modals/Linksent"
+import { useRef } from 'react';
 
 
 const EmailValidation = yup.object().shape({
@@ -15,6 +17,7 @@ const EmailValidation = yup.object().shape({
 
 const ForgotPassword = ({ }, ref) => {
     const [isModalVisible, setModalVisible] = useState(false);
+    const linkRef = useRef()
     const { control, formState: { errors, isValid }, handleSubmit, } = useForm({ mode: "all", resolver: yupResolver(EmailValidation) })
 
     const toggleModal = () => {
@@ -32,6 +35,8 @@ const ForgotPassword = ({ }, ref) => {
     function onSubmit(data) {
         console.log(data);
         toggleModal()
+        linkRef.current.show()
+
     };
 
     return (
@@ -44,6 +49,7 @@ const ForgotPassword = ({ }, ref) => {
                     <PrimaryBtn title={"Continue"} containerStyle={styles.btnStyles} onPress={handleSubmit(onSubmit)} disabled={!isValid} />
                 </View>
             </Modal>
+            <Linksent ref={linkRef} />
         </View>
     )
 }
