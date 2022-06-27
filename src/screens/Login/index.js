@@ -9,20 +9,19 @@ import { useForm } from 'react-hook-form';
 import ForgotPassword from '../../components/Modals/ForgotPassword';
 import Linksent from '../../components/Modals/Linksent';
 import { useRef } from 'react';
+import Onboarding from '../../components/Onboarding';
+import { PrimaryBtn } from '../../components/Buttons';
+import { CustomText } from "../../components/Text"
+import CheckBox from '../../components/CheckBox';
 
 export default function Login({ navigation }) {
-    const childModalRef = useRef();
 
     return (
         <ScreenWrapper
             statusBarColor={AppColors.blue}
             headerUnScrollable={() => <Header title={'WELCOME PINSTAR!'} />}>
             <View style={styles.container}>
-                <ForgotPassword ref={childModalRef} />
-                <Button
-                    title="Open modal"
-                    onPress={() => childModalRef.current.show()}
-                />
+                <CheckBox />
             </View>
         </ScreenWrapper>
     );
