@@ -12,7 +12,7 @@ import { useRef } from 'react';
 import Onboarding from '../../components/Onboarding';
 import { PrimaryBtn } from '../../components/Buttons';
 import { CustomText } from "../../components/Text"
-import CheckBox from '../../components/CheckBox';
+import AddCoverPhoto from '../../components/AddCoverPhoto';
 
 export default function Login({ navigation }) {
 
@@ -21,7 +21,7 @@ export default function Login({ navigation }) {
             statusBarColor={AppColors.blue}
             headerUnScrollable={() => <Header title={'WELCOME PINSTAR!'} />}>
             <View style={styles.container}>
-                <CheckBox />
+                <AddCoverPhoto />
             </View>
         </ScreenWrapper>
     );
