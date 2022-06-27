@@ -35,7 +35,10 @@ const ForgotPassword = ({ }, ref) => {
     function onSubmit(data) {
         console.log(data);
         toggleModal()
-        linkRef.current.show()
+        setTimeout(() => {
+            linkRef.current.show()
+        }, 600);
+
 
     };
 

@@ -13,16 +13,12 @@ import { useRef } from 'react';
 export default function Login({ navigation }) {
     const childModalRef = useRef();
 
-    const { control } = useForm({
-        mode: 'all',
-    });
     return (
         <ScreenWrapper
             statusBarColor={AppColors.blue}
             headerUnScrollable={() => <Header title={'WELCOME PINSTAR!'} />}>
             <View style={styles.container}>
                 <ForgotPassword ref={childModalRef} />
-
                 <Button
                     title="Open modal"
                     onPress={() => childModalRef.current.show()}
